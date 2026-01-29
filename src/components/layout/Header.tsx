@@ -36,14 +36,14 @@ const Header = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="IMPNAT Logo" className="h-12 w-auto" />
-            <div className="hidden sm:block">
-              <h1 className="font-heading font-bold text-primary text-lg leading-tight">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3">
+            <img src={logo} alt="IMPNAT Logo" className="h-10 sm:h-12 w-auto" />
+            <div>
+              <h1 className="font-heading font-bold text-primary text-sm sm:text-lg leading-tight">
                 IMPNAT
               </h1>
-              <p className="text-xs text-muted-foreground">
-                Cursos Profissionais
+              <p className="text-[10px] sm:text-xs text-muted-foreground leading-tight max-w-[120px] sm:max-w-none">
+                Instituto Médio Politécnico
               </p>
             </div>
           </Link>
