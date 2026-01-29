@@ -133,4 +133,29 @@
   .shadow-gold {
     box-shadow: 0 10px 40px -10px hsl(var(--secondary) / 0.4);
   }
+
+  /* WhatsApp green utility */
+  .bg-whatsapp {
+    background-color: #25D366;
+  }
+  
+  .bg-whatsapp-hover:hover {
+    background-color: #128C7E;
+  }
+}
+
+/* Custom breakpoint for extra small devices */
+@media (min-width: 475px) {
+  .xs\:inline {
+    display: inline;
+  }
+  .xs\:flex-row {
+    flex-direction: row;
+  }
+  .xs\:w-auto {
+    width: auto;
+  }
+  .xs\:hidden {
+    display: none;
+  }
 }
