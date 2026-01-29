@@ -71,7 +71,7 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-end justify-center pb-24 sm:pb-28 lg:pb-32 pt-8 sm:pt-12 lg:pt-16">
+      <div className="relative z-10 h-full flex items-end justify-center pb-6 sm:pb-8 lg:pb-10 pt-8 sm:pt-12 lg:pt-16">
         <div className="container mx-auto px-4">
           <div className="max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto text-center" style={{ perspective: "1000px" }}>
             <AnimatePresence mode="wait">
@@ -113,7 +113,7 @@ const HeroSection = () => {
             </AnimatePresence>
 
             <motion.div 
-              className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
+              className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-16 sm:mb-20"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
