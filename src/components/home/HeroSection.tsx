@@ -48,15 +48,17 @@ const HeroSection = () => {
   const prevSlide = () => {
     setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
   };
-  return <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh] overflow-hidden">
+  return <section className="relative min-h-[60vh] sm:min-h-[70vh] lg:min-h-[80vh] overflow-hidden bg-primary">
       {/* Slides */}
       {slides.map((slide, index) => <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? "opacity-100" : "opacity-0"}`}>
           {/* Background Image */}
-          <div className="absolute inset-0 bg-cover bg-center" style={{
-        backgroundImage: `url(${slide.image})`
-      }} />
+          <img 
+            src={slide.image} 
+            alt={`${slide.title} ${slide.highlight}`}
+            className="absolute inset-0 w-full h-full object-cover"
+          />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/80 via-primary/60 to-primary/30 sm:from-primary/70 sm:via-primary/50 sm:to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/40" />
         </div>)}
 
       {/* Content */}
