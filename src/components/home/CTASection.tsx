@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-import cerimonia7 from "@/assets/gallery/cerimonia-7.jpg";
+import ctaImage from "@/assets/cta-image.jpg";
 
 const benefits = [
   "Inscrição 100% Grátis",
@@ -18,9 +18,9 @@ const CTASection = () => {
         {/* Image Side */}
         <div className="relative h-48 sm:h-64 md:h-80 lg:h-auto lg:min-h-[500px] order-2 lg:order-1">
           <img
-            src={cerimonia7}
-            alt="Estudantes IMPNAT em cerimónia de formatura"
-            className="absolute inset-0 w-full h-full object-cover"
+            src={ctaImage}
+            alt="Pais apoiem o futuro dos vossos filhos - Estudante IMPNAT celebrando"
+            className="absolute inset-0 w-full h-full object-cover object-top"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-primary/10" />
         </div>
