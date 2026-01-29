@@ -34,7 +34,7 @@ const CTASection = () => {
           <div className="p-6 sm:p-8 md:p-12 lg:p-16 xl:p-20 w-full">
             <Motion3D type="fadeUp">
               <h2 className="font-heading text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 sm:mb-6">
-                Transforme o seu aprendizado em uma{" "}
+                Pais, apoiem o futuro dos{" "}
                 <motion.span 
                   className="text-primary inline-block"
                   whileHover={{ 
@@ -43,16 +43,16 @@ const CTASection = () => {
                   }}
                   style={{ transformStyle: "preserve-3d" }}
                 >
-                  carreira de sucesso
+                  vossos filhos
                 </motion.span>
               </h2>
             </Motion3D>
             
             <Motion3D type="fadeUp" delay={0.2}>
               <p className="text-muted-foreground text-sm sm:text-base mb-6 sm:mb-8 leading-relaxed">
-                No IMPNAT, oferecemos formação profissional de qualidade com certificação 
-                reconhecida pela ANEP. Junte-se a milhares de alunos que já transformaram 
-                suas vidas através da educação.
+                Invista na educação profissional do seu filho. Com a formação certa, 
+                ele terá as competências necessárias para entrar no mercado de trabalho 
+                e construir um futuro próspero.
               </p>
             </Motion3D>
 
