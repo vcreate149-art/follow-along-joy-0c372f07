@@ -89,7 +89,15 @@ const HeroSection = () => {
 
             {/* Features - Mobile cards */}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-              {features.map((feature, index) => {})}
+              {features.map((feature, index) => (
+                <div key={index} className="flex items-center gap-3 bg-primary-foreground/10 backdrop-blur-sm p-3 sm:p-4 rounded-lg">
+                  <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-secondary flex-shrink-0" />
+                  <div>
+                    <h3 className="text-sm sm:text-base font-semibold text-primary-foreground">{feature.title}</h3>
+                    <p className="text-xs sm:text-sm text-primary-foreground/80">{feature.description}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
