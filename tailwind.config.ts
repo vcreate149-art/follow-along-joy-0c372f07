@@ -14,8 +14,22 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Open Sans", "sans-serif"],
-        heading: ["Montserrat", "sans-serif"],
+        sans: ["Inter", "system-ui", "sans-serif"],
+        heading: ["Plus Jakarta Sans", "sans-serif"],
+      },
+      letterSpacing: {
+        tighter: "-0.02em",
+        tight: "-0.01em",
+        normal: "0",
+        wide: "0.01em",
+        wider: "0.02em",
+      },
+      lineHeight: {
+        tight: "1.2",
+        snug: "1.35",
+        normal: "1.5",
+        relaxed: "1.625",
+        loose: "1.75",
       },
       colors: {
         border: "hsl(var(--border))",
