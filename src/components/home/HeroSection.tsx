@@ -66,14 +66,14 @@ const HeroSection = () => {
             transition={{ duration: 8 }}
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/85 via-primary/70 to-primary/40" />
+          <div className="absolute inset-0 bg-primary/60" />
         </motion.div>
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-center py-12 sm:py-16 lg:py-20">
+      <div className="relative z-10 h-full flex items-center justify-center py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4">
-          <div className="max-w-full sm:max-w-2xl lg:max-w-3xl" style={{ perspective: "1000px" }}>
+          <div className="max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto text-center" style={{ perspective: "1000px" }}>
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentSlide}
@@ -102,7 +102,7 @@ const HeroSection = () => {
                 </h1>
                 
                 <motion.p 
-                  className="text-sm sm:text-base lg:text-lg text-primary-foreground/90 mb-6 sm:mb-8 max-w-md sm:max-w-lg"
+                  className="text-sm sm:text-base lg:text-lg text-primary-foreground/90 mb-6 sm:mb-8 max-w-md sm:max-w-lg mx-auto"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.6, duration: 0.5 }}
@@ -113,7 +113,7 @@ const HeroSection = () => {
             </AnimatePresence>
 
             <motion.div 
-              className="flex flex-col xs:flex-row gap-3 sm:gap-4 mb-8 sm:mb-12"
+              className="flex flex-col xs:flex-row justify-center gap-3 sm:gap-4 mb-8 sm:mb-12"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.5 }}
@@ -147,7 +147,7 @@ const HeroSection = () => {
       </div>
 
       {/* Navigation Arrows */}
-      <div className="absolute bottom-4 sm:bottom-8 left-4 sm:left-8 z-20 flex items-center gap-2 sm:gap-4">
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 sm:gap-4">
         <motion.button 
           onClick={prevSlide} 
           className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center bg-primary-foreground/10 hover:bg-primary-foreground/20 text-primary-foreground transition-colors rounded-full" 
