@@ -22,7 +22,7 @@ const slides = [{
   image: cerimonia3,
   title: "INVESTE NO TEU",
   highlight: "FUTURO",
-  subtitle: "Inscrições Abertas 2025 - Inscrição Grátis"
+  subtitle: "Inscrições Abertas 2026 - Inscrição Grátis"
 }];
 
 
@@ -71,7 +71,7 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-end justify-center pb-20 sm:pb-24 lg:pb-28 pt-8 sm:pt-12 lg:pt-16">
+      <div className="relative z-10 h-full flex items-end justify-center pb-24 sm:pb-28 lg:pb-32 pt-8 sm:pt-12 lg:pt-16">
         <div className="container mx-auto px-4">
           <div className="max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto text-center" style={{ perspective: "1000px" }}>
             <AnimatePresence mode="wait">
