@@ -2,11 +2,11 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroSection from "@/components/home/HeroSection";
-import StatsSection from "@/components/home/StatsSection";
 import CoursesSection from "@/components/home/CoursesSection";
+import CTASection from "@/components/home/CTASection";
 import TestimonialsSection from "@/components/home/TestimonialsSection";
 import GallerySection from "@/components/home/GallerySection";
-import CTASection from "@/components/home/CTASection";
+import StatsSection from "@/components/home/StatsSection";
 
 const Index = () => {
   return (
@@ -14,11 +14,11 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection />
-        <StatsSection />
         <CoursesSection />
+        <CTASection />
         <TestimonialsSection />
         <GallerySection />
-        <CTASection />
+        <StatsSection />
       </main>
       <Footer />
       <WhatsAppButton />
