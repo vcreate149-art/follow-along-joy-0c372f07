@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Facebook, Instagram, Phone, Mail, MapPin } from "lucide-react";
-import logo from "@/assets/logo-impnat.webp";
+import logo from "@/assets/logo-impnat.png";
 
 const Footer = () => {
   return (
