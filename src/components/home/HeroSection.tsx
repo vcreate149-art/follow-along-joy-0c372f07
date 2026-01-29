@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, GraduationCap, Award, Briefcase } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { FloatingElement } from "@/components/animations/Motion3D";
 import cerimonia1 from "@/assets/gallery/cerimonia-1.jpg";
@@ -25,15 +25,6 @@ const slides = [{
   subtitle: "Inscrições Abertas 2025 - Inscrição Grátis"
 }];
 
-const features = [{
-  icon: Award,
-  title: "Certificado ANEP",
-  description: "Diploma reconhecido"
-}, {
-  icon: Briefcase,
-  title: "Estágio Garantido",
-  description: "Parcerias empresariais"
-}];
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -151,40 +142,6 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Features - Mobile cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-              {features.map((feature, index) => (
-                <FloatingElement 
-                  key={index} 
-                  amplitude={5} 
-                  duration={3 + index * 0.5}
-                >
-                  <motion.div 
-                    className="flex items-center gap-3 bg-primary-foreground/10 backdrop-blur-sm p-3 sm:p-4 rounded-lg"
-                    initial={{ opacity: 0, y: 40, rotateX: 20 }}
-                    animate={{ opacity: 1, y: 0, rotateX: 0 }}
-                    transition={{ delay: 1 + index * 0.15, duration: 0.5 }}
-                    whileHover={{ 
-                      scale: 1.05, 
-                      rotateY: 5,
-                      boxShadow: "0 20px 40px -15px rgba(0,0,0,0.3)",
-                    }}
-                    style={{ transformStyle: "preserve-3d" }}
-                  >
-                    <motion.div
-                      whileHover={{ rotate: 360 }}
-                      transition={{ duration: 0.5 }}
-                    >
-                      <feature.icon className="h-5 w-5 sm:h-6 sm:w-6 text-secondary flex-shrink-0" />
-                    </motion.div>
-                    <div>
-                      <h3 className="text-sm sm:text-base font-semibold text-primary-foreground">{feature.title}</h3>
-                      <p className="text-xs sm:text-sm text-primary-foreground/80">{feature.description}</p>
-                    </div>
-                  </motion.div>
-                </FloatingElement>
-              ))}
-            </div>
           </div>
         </div>
       </div>
