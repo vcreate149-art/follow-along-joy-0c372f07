@@ -26,10 +26,6 @@ const slides = [{
 }];
 
 const features = [{
-  icon: GraduationCap,
-  title: "Inscrição Grátis",
-  description: "Sem taxas de inscrição"
-}, {
   icon: Award,
   title: "Certificado ANEP",
   description: "Diploma reconhecido"
