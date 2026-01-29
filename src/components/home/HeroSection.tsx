@@ -71,7 +71,7 @@ const HeroSection = () => {
       </AnimatePresence>
 
       {/* Content */}
-      <div className="relative z-10 h-full flex items-end justify-center pb-20 sm:pb-24 lg:pb-28 pt-12 sm:pt-16 lg:pt-20">
+      <div className="relative z-10 h-full flex items-end justify-center pb-32 sm:pb-36 lg:pb-40 pt-12 sm:pt-16 lg:pt-20">
         <div className="container mx-auto px-4">
           <div className="max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto text-center" style={{ perspective: "1000px" }}>
             <AnimatePresence mode="wait">
