@@ -23,7 +23,7 @@ const stats = [
   },
   {
     icon: Calendar,
-    value: 10,
+    value: 15,
     suffix: "+",
     label: "Anos de Experiência",
   },
