@@ -1,6 +1,5 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import VocationalTest from "@/components/VocationalTest";
 import { Badge } from "@/components/ui/badge";
 import { Brain } from "lucide-react";
@@ -37,7 +36,6 @@ const TesteVocacional = () => {
         </section>
       </main>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
