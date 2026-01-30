@@ -45,7 +45,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[70vh] sm:h-[80vh] lg:h-[90vh] overflow-hidden bg-primary">
+    <section className="relative h-screen overflow-hidden bg-primary">
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
@@ -54,19 +54,19 @@ const HeroSection = () => {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
-          className="absolute inset-0 flex items-center justify-center"
+          className="absolute inset-0"
         >
-          {/* Background Image - Full Visibility */}
+          {/* Background Image - Amplified */}
           <motion.img 
             src={slides[currentSlide].image} 
             alt={`${slides[currentSlide].title} ${slides[currentSlide].highlight}`}
-            className="w-full h-full object-contain"
-            initial={{ scale: 1.05 }}
-            animate={{ scale: 1 }}
-            transition={{ duration: 10, ease: "easeOut" }}
+            className="absolute inset-0 w-full h-full object-cover object-center scale-105"
+            initial={{ scale: 1.15 }}
+            animate={{ scale: 1.05 }}
+            transition={{ duration: 12, ease: "easeOut" }}
           />
           {/* Professional Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-primary/10" />
         </motion.div>
       </AnimatePresence>
 
