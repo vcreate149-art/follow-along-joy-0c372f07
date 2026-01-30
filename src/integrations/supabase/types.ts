@@ -14,6 +14,88 @@ export type Database = {
   }
   public: {
     Tables: {
+      announcements: {
+        Row: {
+          content: string
+          created_by: string | null
+          expires_at: string | null
+          id: string
+          is_urgent: boolean | null
+          published_at: string
+          target_audience: string | null
+          title: string
+        }
+        Insert: {
+          content: string
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          is_urgent?: boolean | null
+          published_at?: string
+          target_audience?: string | null
+          title: string
+        }
+        Update: {
+          content?: string
+          created_by?: string | null
+          expires_at?: string | null
+          id?: string
+          is_urgent?: boolean | null
+          published_at?: string
+          target_audience?: string | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "announcements_created_by_fkey"
+            columns: ["created_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      assessments: {
+        Row: {
+          assessment_date: string
+          created_at: string
+          description: string | null
+          discipline_id: string
+          id: string
+          location: string | null
+          max_grade: number | null
+          title: string
+        }
+        Insert: {
+          assessment_date: string
+          created_at?: string
+          description?: string | null
+          discipline_id: string
+          id?: string
+          location?: string | null
+          max_grade?: number | null
+          title: string
+        }
+        Update: {
+          assessment_date?: string
+          created_at?: string
+          description?: string | null
+          discipline_id?: string
+          id?: string
+          location?: string | null
+          max_grade?: number | null
+          title?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "assessments_discipline_id_fkey"
+            columns: ["discipline_id"]
+            isOneToOne: false
+            referencedRelation: "disciplines"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blog_posts: {
         Row: {
           author: string
@@ -80,6 +162,211 @@ export type Database = {
         }
         Relationships: []
       }
+      courses: {
+        Row: {
+          category: string
+          created_at: string
+          description: string | null
+          duration: string | null
+          id: string
+          image_url: string | null
+          is_active: boolean
+          name: string
+        }
+        Insert: {
+          category: string
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          name: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          description?: string | null
+          duration?: string | null
+          id?: string
+          image_url?: string | null
+          is_active?: boolean
+          name?: string
+        }
+        Relationships: []
+      }
+      disciplines: {
+        Row: {
+          course_id: string
+          created_at: string
+          credits: number | null
+          description: string | null
+          id: string
+          name: string
+          semester: number | null
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          credits?: number | null
+          description?: string | null
+          id?: string
+          name: string
+          semester?: number | null
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          credits?: number | null
+          description?: string | null
+          id?: string
+          name?: string
+          semester?: number | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "disciplines_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      document_requests: {
+        Row: {
+          document_type: string
+          id: string
+          notes: string | null
+          purpose: string | null
+          ready_at: string | null
+          requested_at: string
+          status: Database["public"]["Enums"]["document_status"]
+          student_id: string
+        }
+        Insert: {
+          document_type: string
+          id?: string
+          notes?: string | null
+          purpose?: string | null
+          ready_at?: string | null
+          requested_at?: string
+          status?: Database["public"]["Enums"]["document_status"]
+          student_id: string
+        }
+        Update: {
+          document_type?: string
+          id?: string
+          notes?: string | null
+          purpose?: string | null
+          ready_at?: string | null
+          requested_at?: string
+          status?: Database["public"]["Enums"]["document_status"]
+          student_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "document_requests_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      enrollments: {
+        Row: {
+          course_id: string
+          created_at: string
+          enrollment_date: string
+          expected_completion: string | null
+          id: string
+          progress_percent: number | null
+          status: string
+          student_id: string
+          updated_at: string
+        }
+        Insert: {
+          course_id: string
+          created_at?: string
+          enrollment_date?: string
+          expected_completion?: string | null
+          id?: string
+          progress_percent?: number | null
+          status?: string
+          student_id: string
+          updated_at?: string
+        }
+        Update: {
+          course_id?: string
+          created_at?: string
+          enrollment_date?: string
+          expected_completion?: string | null
+          id?: string
+          progress_percent?: number | null
+          status?: string
+          student_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "enrollments_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "enrollments_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      grades: {
+        Row: {
+          assessment_id: string
+          feedback: string | null
+          grade: number | null
+          graded_at: string | null
+          id: string
+          student_id: string
+        }
+        Insert: {
+          assessment_id: string
+          feedback?: string | null
+          grade?: number | null
+          graded_at?: string | null
+          id?: string
+          student_id: string
+        }
+        Update: {
+          assessment_id?: string
+          feedback?: string | null
+          grade?: number | null
+          graded_at?: string | null
+          id?: string
+          student_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "grades_assessment_id_fkey"
+            columns: ["assessment_id"]
+            isOneToOne: false
+            referencedRelation: "assessments"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "grades_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       inscricoes: {
         Row: {
           bilhete_identidade: string
@@ -130,6 +417,149 @@ export type Database = {
           updated_at?: string
         }
         Relationships: []
+      }
+      payments: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string
+          due_date: string
+          id: string
+          paid_date: string | null
+          payment_method: string | null
+          reference_number: string | null
+          status: Database["public"]["Enums"]["payment_status"]
+          student_id: string
+          updated_at: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          description: string
+          due_date: string
+          id?: string
+          paid_date?: string | null
+          payment_method?: string | null
+          reference_number?: string | null
+          status?: Database["public"]["Enums"]["payment_status"]
+          student_id: string
+          updated_at?: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string
+          due_date?: string
+          id?: string
+          paid_date?: string | null
+          payment_method?: string | null
+          reference_number?: string | null
+          status?: Database["public"]["Enums"]["payment_status"]
+          student_id?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "payments_student_id_fkey"
+            columns: ["student_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          address: string | null
+          avatar_url: string | null
+          birth_date: string | null
+          created_at: string
+          email: string | null
+          full_name: string
+          id: string
+          id_number: string | null
+          phone: string | null
+          updated_at: string
+          user_id: string
+          user_type: Database["public"]["Enums"]["user_type"]
+        }
+        Insert: {
+          address?: string | null
+          avatar_url?: string | null
+          birth_date?: string | null
+          created_at?: string
+          email?: string | null
+          full_name: string
+          id?: string
+          id_number?: string | null
+          phone?: string | null
+          updated_at?: string
+          user_id: string
+          user_type?: Database["public"]["Enums"]["user_type"]
+        }
+        Update: {
+          address?: string | null
+          avatar_url?: string | null
+          birth_date?: string | null
+          created_at?: string
+          email?: string | null
+          full_name?: string
+          id?: string
+          id_number?: string | null
+          phone?: string | null
+          updated_at?: string
+          user_id?: string
+          user_type?: Database["public"]["Enums"]["user_type"]
+        }
+        Relationships: []
+      }
+      study_materials: {
+        Row: {
+          created_at: string
+          description: string | null
+          discipline_id: string
+          file_type: string
+          file_url: string | null
+          id: string
+          title: string
+          uploaded_by: string | null
+        }
+        Insert: {
+          created_at?: string
+          description?: string | null
+          discipline_id: string
+          file_type?: string
+          file_url?: string | null
+          id?: string
+          title: string
+          uploaded_by?: string | null
+        }
+        Update: {
+          created_at?: string
+          description?: string | null
+          discipline_id?: string
+          file_type?: string
+          file_url?: string | null
+          id?: string
+          title?: string
+          uploaded_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "study_materials_discipline_id_fkey"
+            columns: ["discipline_id"]
+            isOneToOne: false
+            referencedRelation: "disciplines"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "study_materials_uploaded_by_fkey"
+            columns: ["uploaded_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_roles: {
         Row: {
@@ -191,6 +621,9 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      document_status: "pending" | "processing" | "ready" | "delivered"
+      payment_status: "pending" | "paid" | "overdue" | "cancelled"
+      user_type: "student" | "teacher" | "staff" | "admin"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -319,6 +752,9 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      document_status: ["pending", "processing", "ready", "delivered"],
+      payment_status: ["pending", "paid", "overdue", "cancelled"],
+      user_type: ["student", "teacher", "staff", "admin"],
     },
   },
 } as const

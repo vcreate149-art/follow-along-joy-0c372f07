@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Facebook, Instagram } from "lucide-react";
+import { Menu, Facebook, Instagram, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import logo from "@/assets/logo-impnat.png";
@@ -62,7 +62,7 @@ const Header = () => {
             ))}
           </nav>
 
-          {/* Social + WhatsApp */}
+          {/* Social + WhatsApp + Área do Aluno */}
           <div className="hidden lg:flex items-center gap-4">
             <a
               href="https://facebook.com/impnat"
@@ -88,6 +88,15 @@ const Header = () => {
               <a href="https://wa.me/258875161111" target="_blank" rel="noopener noreferrer">
                 WhatsApp
               </a>
+            </Button>
+            <Button
+              asChild
+              className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+            >
+              <Link to="/auth">
+                <User className="h-4 w-4 mr-2" />
+                Área do Aluno
+              </Link>
             </Button>
           </div>
 
@@ -120,10 +129,20 @@ const Header = () => {
                     </Link>
                   ))}
                 </nav>
-                <div className="mt-auto pb-8">
+                <div className="mt-auto pb-8 space-y-3">
                   <Button
                     asChild
                     className="w-full bg-primary text-primary-foreground hover:bg-primary/90 font-semibold"
+                  >
+                    <Link to="/auth" onClick={() => setIsOpen(false)}>
+                      <User className="h-4 w-4 mr-2" />
+                      Área do Aluno
+                    </Link>
+                  </Button>
+                  <Button
+                    asChild
+                    variant="outline"
+                    className="w-full font-semibold"
                   >
                     <a href="https://wa.me/258875161111" target="_blank" rel="noopener noreferrer" onClick={() => setIsOpen(false)}>
                       Contactar via WhatsApp
