@@ -28,6 +28,7 @@ import UserManagement from "./pages/admin/UserManagement";
 import FinancialControl from "./pages/admin/FinancialControl";
 import ContentManagement from "./pages/admin/ContentManagement";
 import AdminSettings from "./pages/admin/AdminSettings";
+import AdminRolesManagement from "./pages/admin/AdminRolesManagement";
 
 const queryClient = new QueryClient();
 
@@ -59,6 +60,7 @@ const App = () => (
           {/* Admin Dashboard Routes */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/utilizadores" element={<UserManagement />} />
+          <Route path="/admin/administradores" element={<AdminRolesManagement />} />
           <Route path="/admin/financeiro" element={<FinancialControl />} />
           <Route path="/admin/conteudo" element={<ContentManagement />} />
           <Route path="/admin/configuracoes" element={<AdminSettings />} />

@@ -16,9 +16,11 @@ import {
   CheckCircle,
   Clock,
   ArrowRight,
+  Shield,
 } from "lucide-react";
 import { format } from "date-fns";
 import { pt } from "date-fns/locale";
+import { isAdminRole, getAdminLabel, hasPermission } from "@/lib/admin-roles";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({
@@ -33,6 +35,7 @@ const AdminDashboard = () => {
   const [recentInscricoes, setRecentInscricoes] = useState<any[]>([]);
   const [recentPayments, setRecentPayments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [adminRole, setAdminRole] = useState<string | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -50,10 +53,13 @@ const AdminDashboard = () => {
         .eq("user_id", session.user.id)
         .single();
 
-      if (roleData?.role !== "admin") {
+      const role = roleData?.role as string | null;
+      if (!isAdminRole(role)) {
         navigate("/dashboard");
         return;
       }
+
+      setAdminRole(role);
 
       // Fetch stats
       const [
@@ -117,9 +123,17 @@ const AdminDashboard = () => {
       <div className="space-y-6">
         {/* Header */}
         <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-6 text-primary-foreground">
-          <h1 className="font-heading text-2xl md:text-3xl font-bold mb-2">
-            Painel Administrativo
-          </h1>
+          <div className="flex items-center gap-3 mb-2">
+            <Shield className="h-8 w-8" />
+            <div>
+              <h1 className="font-heading text-2xl md:text-3xl font-bold">
+                Painel Administrativo
+              </h1>
+              <Badge variant="secondary" className="mt-1">
+                {getAdminLabel(adminRole)}
+              </Badge>
+            </div>
+          </div>
           <p className="text-primary-foreground/80">
             Gestão completa do IMPNAT - Alunos, Finanças e Conteúdos.
           </p>

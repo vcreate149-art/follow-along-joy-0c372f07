@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { Loader2, Lock, Mail } from "lucide-react";
 import logo from "@/assets/logo-impnat.png";
+import { isAdminRole } from "@/lib/admin-roles";
 
 const Auth = () => {
   const [email, setEmail] = useState("");
@@ -27,20 +28,24 @@ const Auth = () => {
           .eq("user_id", session.user.id)
           .single();
         
-        navigate(roleData?.role === "admin" ? "/admin" : "/dashboard");
+        const role = roleData?.role as string | null;
+        navigate(isAdminRole(role) ? "/admin" : "/dashboard");
       }
     };
     checkSession();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
-        const { data: roleData } = await supabase
-          .from("user_roles")
-          .select("role")
-          .eq("user_id", session.user.id)
-          .single();
-        
-        navigate(roleData?.role === "admin" ? "/admin" : "/dashboard");
+        setTimeout(async () => {
+          const { data: roleData } = await supabase
+            .from("user_roles")
+            .select("role")
+            .eq("user_id", session.user.id)
+            .single();
+          
+          const role = roleData?.role as string | null;
+          navigate(isAdminRole(role) ? "/admin" : "/dashboard");
+        }, 0);
       }
     });
 
