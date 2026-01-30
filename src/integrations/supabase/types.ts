@@ -96,6 +96,57 @@ export type Database = {
           },
         ]
       }
+      authorized_emails: {
+        Row: {
+          authorized_at: string | null
+          authorized_by: string | null
+          course_id: string | null
+          email: string
+          full_name: string
+          id: string
+          notes: string | null
+          registered_at: string | null
+          student_id: string | null
+        }
+        Insert: {
+          authorized_at?: string | null
+          authorized_by?: string | null
+          course_id?: string | null
+          email: string
+          full_name: string
+          id?: string
+          notes?: string | null
+          registered_at?: string | null
+          student_id?: string | null
+        }
+        Update: {
+          authorized_at?: string | null
+          authorized_by?: string | null
+          course_id?: string | null
+          email?: string
+          full_name?: string
+          id?: string
+          notes?: string | null
+          registered_at?: string | null
+          student_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "authorized_emails_authorized_by_fkey"
+            columns: ["authorized_by"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "authorized_emails_course_id_fkey"
+            columns: ["course_id"]
+            isOneToOne: false
+            referencedRelation: "courses"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       blog_posts: {
         Row: {
           author: string
