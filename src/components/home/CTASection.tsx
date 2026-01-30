@@ -111,7 +111,7 @@ const CTASection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-foreground/30 text-foreground hover:bg-foreground/10 rounded-none px-6 sm:px-8 font-medium text-sm sm:text-base w-full xs:w-auto"
+                className="border-2 border-foreground text-foreground bg-foreground/10 hover:bg-foreground/20 rounded-none px-6 sm:px-8 font-semibold text-sm sm:text-base w-full xs:w-auto"
               >
                 <a href="tel:+258875161111">
                   Ligar Agora
