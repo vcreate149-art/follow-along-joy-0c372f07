@@ -1,6 +1,5 @@
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroSection from "@/components/home/HeroSection";
 import IntroSection from "@/components/home/IntroSection";
 import CoursesSection from "@/components/home/CoursesSection";
@@ -25,7 +24,6 @@ const Index = () => {
         <StatsSection />
       </main>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

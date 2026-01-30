@@ -13,7 +13,7 @@ import TesteVocacional from "./pages/TesteVocacional";
 import Blog from "./pages/Blog";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
-import ChatBot from "./components/ChatBot";
+
 
 // Dashboard pages (Student)
 import StudentDashboard from "./pages/dashboard/StudentDashboard";
@@ -70,7 +70,7 @@ const App = () => (
           {/* Catch-all */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <ChatBot />
+        
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
