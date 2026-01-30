@@ -399,7 +399,7 @@ const Cursos = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 rounded-none px-8 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
+                className="border-2 border-primary-foreground text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 rounded-none px-8 transition-all duration-300 hover:shadow-lg hover:scale-105 active:scale-95"
               >
                 <a href="tel:+258875161111">
                   Ligar: +258 87 516 1111
