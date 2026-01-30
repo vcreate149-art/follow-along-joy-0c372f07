@@ -40,11 +40,11 @@ interface DashboardLayoutProps {
 }
 
 const studentMenuItems = [
-  { title: "Painel de Controlo", url: "/dashboard", icon: LayoutDashboard },
-  { title: "Módulo Académico", url: "/dashboard/academico", icon: BookOpen },
-  { title: "Módulo Financeiro", url: "/dashboard/financeiro", icon: CreditCard },
-  { title: "Secretaria Digital", url: "/dashboard/secretaria", icon: FileText },
-  { title: "Avisos", url: "/dashboard/avisos", icon: Bell },
+  { title: "Painel de Controlo", url: "/impnat-aluno", icon: LayoutDashboard },
+  { title: "Módulo Académico", url: "/impnat-aluno/academico", icon: BookOpen },
+  { title: "Módulo Financeiro", url: "/impnat-aluno/financeiro", icon: CreditCard },
+  { title: "Secretaria Digital", url: "/impnat-aluno/secretaria", icon: FileText },
+  { title: "Avisos", url: "/impnat-aluno/avisos", icon: Bell },
 ];
 
 // Admin menu items with required permission levels
@@ -188,7 +188,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                     <SidebarMenuItem>
                       <SidebarMenuButton asChild>
                         <Link
-                          to="/dashboard"
+                          to="/impnat-aluno"
                           className="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-muted transition-colors"
                         >
                           <GraduationCap className="h-5 w-5" />
