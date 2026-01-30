@@ -57,9 +57,9 @@ const cursosMedios: Course[] = [
     highlights: ["Formação prática em laboratório", "Certificação ANEP", "Estágio garantido"]
   },
   {
-    id: "electricidade-industrial",
-    name: "Electricidade Industrial",
-    description: "Aprende a instalar, reparar e manter sistemas eléctricos industriais. Domina circuitos, quadros eléctricos e automação industrial.",
+    id: "eletricidade-industrial",
+    name: "Eletricidade Industrial",
+    description: "Aprende a instalar, reparar e manter sistemas elétricos industriais. Domina circuitos, quadros elétricos e automação industrial.",
     duration: "3 Anos",
     price: "3.500 MT/mês",
     category: "medio",
@@ -292,7 +292,8 @@ const Cursos = () => {
                     <img
                       src={course.image}
                       alt={course.name}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      style={{ objectPosition: 'center center' }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="absolute top-3 left-3 transform transition-transform duration-300 group-hover:scale-105">

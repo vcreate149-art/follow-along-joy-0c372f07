@@ -20,8 +20,8 @@ const courses = [
   {
     id: 2,
     image: cerimonia5,
-    title: "Electricidade Industrial e Instaladora",
-    description: "Capacitação técnica em instalações e manutenção eléctrica para indústria e residências.",
+    title: "Eletricidade Industrial e Instaladora",
+    description: "Capacitação técnica em instalações e manutenção elétrica para indústria e residências.",
     duration: "3 anos",
     students: "90+ alunos",
   },
@@ -66,8 +66,9 @@ const CoursesSection = () => {
                   <motion.img
                     src={course.image}
                     alt={course.title}
-                    className="w-full h-full object-cover object-top"
-                    whileHover={{ scale: 1.08 }}
+                    className="w-full h-full object-cover"
+                    style={{ objectPosition: 'center center' }}
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6 }}
                   />
                   <motion.div 
