@@ -3,31 +3,58 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { FloatingElement } from "@/components/animations/Motion3D";
+
+// Desktop images (16:9 promotional)
+import heroSlide1 from "@/assets/hero/slide-1.jpg";
+import heroSlide2 from "@/assets/hero/slide-2.jpg";
+import heroSlide3 from "@/assets/hero/slide-3.jpg";
+import heroSlide4 from "@/assets/hero/slide-4.jpg";
+
+// Mobile images (original ceremony photos)
 import cerimonia1 from "@/assets/gallery/cerimonia-1.jpg";
 import cerimonia2 from "@/assets/gallery/cerimonia-2.jpg";
 import cerimonia3 from "@/assets/gallery/cerimonia-3.jpg";
 
 const slides = [{
-  image: cerimonia1,
-  title: "EDUCAÇÃO",
-  highlight: "PARA TODOS",
+  desktopImage: heroSlide1,
+  mobileImage: cerimonia1,
+  title: "QUEM SE PREPARA",
+  highlight: "CHEGA MAIS LONGE",
   subtitle: "Cursos Profissionais com Certificação ANEP"
 }, {
-  image: cerimonia2,
-  title: "A TUA JORNADA",
-  highlight: "COMEÇA AQUI",
+  desktopImage: heroSlide2,
+  mobileImage: cerimonia2,
+  title: "CERIMÓNIA DE",
+  highlight: "CERTIFICADOS",
   subtitle: "Formação de Qualidade com Estágio Garantido"
 }, {
-  image: cerimonia3,
-  title: "INVESTE NO TEU",
-  highlight: "FUTURO",
+  desktopImage: heroSlide3,
+  mobileImage: cerimonia3,
+  title: "CELEBRAMOS",
+  highlight: "CONQUISTAS",
+  subtitle: "O IMPNAT prepara os líderes do futuro"
+}, {
+  desktopImage: heroSlide4,
+  mobileImage: cerimonia1,
+  title: "A TUA JORNADA",
+  highlight: "COMEÇA AQUI",
   subtitle: "Inscrições Abertas 2026 - Inscrição Grátis"
 }];
 
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -44,30 +71,36 @@ const HeroSection = () => {
     setCurrentSlide(prev => (prev - 1 + slides.length) % slides.length);
   };
 
+  const currentImage = isMobile 
+    ? slides[currentSlide].mobileImage 
+    : slides[currentSlide].desktopImage;
+
   return (
     <section className="relative h-screen overflow-hidden bg-primary">
       {/* Slides */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={currentSlide}
+          key={`${currentSlide}-${isMobile ? 'mobile' : 'desktop'}`}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
-          {/* Background Image - Centered focal point */}
+          {/* Background Image - 16:9 on desktop, centered focal point */}
           <motion.img 
-            src={slides[currentSlide].image} 
+            src={currentImage} 
             alt={`${slides[currentSlide].title} ${slides[currentSlide].highlight}`}
             className="absolute inset-0 w-full h-full object-cover"
-            style={{ objectPosition: 'center center' }}
+            style={{ 
+              objectPosition: isMobile ? 'center center' : 'center 30%'
+            }}
             initial={{ scale: 1.1 }}
             animate={{ scale: 1.02 }}
             transition={{ duration: 12, ease: "easeOut" }}
           />
           {/* Professional Gradient Overlay - Less opaque for better text visibility */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
         </motion.div>
       </AnimatePresence>
 
