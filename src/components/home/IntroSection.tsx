@@ -14,11 +14,11 @@ const IntroSection = () => {
             transition={{ duration: 0.6 }}
             className="relative order-2 lg:order-1"
           >
-            <div className="relative overflow-hidden rounded-lg shadow-xl bg-muted">
+            <div className="relative overflow-hidden rounded-lg shadow-2xl">
               <img
                 src={ctaImage}
                 alt="Estudantes em formação profissional"
-                className="w-full h-auto max-h-[500px] object-contain mx-auto"
+                className="w-full h-[300px] sm:h-[400px] lg:h-[500px] object-cover object-center"
               />
             </div>
             {/* Elemento decorativo */}

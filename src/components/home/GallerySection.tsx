@@ -49,7 +49,7 @@ const GallerySection = () => {
               className={index === 0 ? "col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 lg:col-span-2 lg:row-span-2" : ""}
             >
               <motion.div
-                className="aspect-square overflow-hidden cursor-pointer group rounded-lg relative bg-muted flex items-center justify-center"
+                className="aspect-square overflow-hidden cursor-pointer group rounded-lg relative"
                 onClick={() => setSelectedImage(image)}
                 whileHover={{ 
                   scale: 1.05,
@@ -64,9 +64,9 @@ const GallerySection = () => {
                 <motion.img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
-                  whileHover={{ scale: 1.03 }}
+                  whileHover={{ scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                 />
                 <motion.div 
