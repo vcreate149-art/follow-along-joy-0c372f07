@@ -66,8 +66,8 @@ const CoursesSection = () => {
                   <motion.img
                     src={course.image}
                     alt={course.title}
-                    className="w-full h-full object-cover"
-                    whileHover={{ scale: 1.1 }}
+                    className="w-full h-full object-contain bg-muted"
+                    whileHover={{ scale: 1.05 }}
                     transition={{ duration: 0.6 }}
                   />
                   <motion.div 

@@ -18,9 +18,8 @@ const IntroSection = () => {
               <img
                 src={ctaImage}
                 alt="Estudantes em formação profissional"
-                className="w-full h-64 sm:h-80 lg:h-96 object-cover"
+                className="w-full h-auto object-contain"
               />
-              <div className="absolute inset-0 bg-primary/10" />
             </div>
             {/* Elemento decorativo */}
             <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-secondary/20 rounded-lg -z-10" />
