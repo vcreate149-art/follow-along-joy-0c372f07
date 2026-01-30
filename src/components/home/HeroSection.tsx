@@ -50,23 +50,23 @@ const HeroSection = () => {
       <AnimatePresence mode="wait">
         <motion.div
           key={currentSlide}
-          initial={{ opacity: 0, scale: 1.1 }}
+          initial={{ opacity: 0, scale: 1.05 }}
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8 }}
-          className="absolute inset-0"
+          className="absolute inset-0 flex items-center justify-center"
         >
           {/* Background Image */}
           <motion.img 
             src={slides[currentSlide].image} 
             alt={`${slides[currentSlide].title} ${slides[currentSlide].highlight}`}
-            className="absolute inset-0 w-full h-full object-contain sm:object-cover object-center"
-            initial={{ scale: 1.1 }}
+            className="w-full h-full object-contain"
+            initial={{ scale: 1.05 }}
             animate={{ scale: 1 }}
             transition={{ duration: 8 }}
           />
           {/* Overlay */}
-          <div className="absolute inset-0 bg-primary/60" />
+          <div className="absolute inset-0 bg-primary/50" />
         </motion.div>
       </AnimatePresence>
 
