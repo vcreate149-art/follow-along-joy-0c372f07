@@ -66,8 +66,8 @@ const HeroSection = () => {
             animate={{ scale: 1.02 }}
             transition={{ duration: 12, ease: "easeOut" }}
           />
-          {/* Professional Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-primary/10" />
+          {/* Professional Gradient Overlay - Less opaque for better text visibility */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
         </motion.div>
       </AnimatePresence>
 
