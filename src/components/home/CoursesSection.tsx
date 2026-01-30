@@ -4,14 +4,14 @@ import { Clock, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { StaggerContainer, StaggerItem, Card3D, Motion3D } from "@/components/animations/Motion3D";
 
-import cerimonia4 from "@/assets/gallery/cerimonia-4.jpg";
-import cerimonia5 from "@/assets/gallery/cerimonia-5.jpg";
-import cerimonia6 from "@/assets/gallery/cerimonia-6.jpg";
+import contabilidadeMedio from "@/assets/cursos/contabilidade-medio.jpg";
+import electricidadeIndustrial from "@/assets/cursos/electricidade-industrial.jpg";
+import suporteInformatico from "@/assets/cursos/suporte-informatico.jpg";
 
 const courses = [
   {
     id: 1,
-    image: cerimonia4,
+    image: contabilidadeMedio,
     title: "Contabilidade e Gestão Empresarial",
     description: "Formação completa em contabilidade, finanças e gestão empresarial com foco na prática profissional.",
     duration: "3 anos",
@@ -19,7 +19,7 @@ const courses = [
   },
   {
     id: 2,
-    image: cerimonia5,
+    image: electricidadeIndustrial,
     title: "Eletricidade Industrial e Instaladora",
     description: "Capacitação técnica em instalações e manutenção elétrica para indústria e residências.",
     duration: "3 anos",
@@ -27,7 +27,7 @@ const courses = [
   },
   {
     id: 3,
-    image: cerimonia6,
+    image: suporteInformatico,
     title: "Informática e Redes de Computadores",
     description: "Formação em suporte técnico, reparação de computadores e gestão de redes empresariais.",
     duration: "6 meses",
