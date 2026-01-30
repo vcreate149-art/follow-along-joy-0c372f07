@@ -18,19 +18,29 @@ const Auth = () => {
   const { toast } = useToast();
 
   useEffect(() => {
-    // Check if already logged in
     const checkSession = async () => {
       const { data: { session } } = await supabase.auth.getSession();
       if (session) {
-        navigate("/admin");
+        const { data: roleData } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", session.user.id)
+          .single();
+        
+        navigate(roleData?.role === "admin" ? "/admin" : "/dashboard");
       }
     };
     checkSession();
 
-    // Listen for auth changes
-    const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session) {
-        navigate("/admin");
+        const { data: roleData } = await supabase
+          .from("user_roles")
+          .select("role")
+          .eq("user_id", session.user.id)
+          .single();
+        
+        navigate(roleData?.role === "admin" ? "/admin" : "/dashboard");
       }
     });
 
@@ -43,19 +53,28 @@ const Auth = () => {
 
     try {
       if (isSignUp) {
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/admin`,
+            emailRedirectTo: `${window.location.origin}/dashboard`,
           },
         });
 
         if (error) throw error;
 
+        if (data.user) {
+          await supabase.from("profiles").insert({
+            user_id: data.user.id,
+            full_name: email.split("@")[0],
+            email: email,
+            user_type: "student",
+          });
+        }
+
         toast({
           title: "Conta Criada",
-          description: "Verifica o teu email para confirmar a conta.",
+          description: "Bem-vindo ao IMPNAT! A tua conta foi criada com sucesso.",
         });
       } else {
         const { error } = await supabase.auth.signInWithPassword({
@@ -67,7 +86,7 @@ const Auth = () => {
 
         toast({
           title: "Login Efetuado",
-          description: "Bem-vindo ao painel administrativo.",
+          description: "Bem-vindo de volta!",
         });
       }
     } catch (error: any) {
@@ -97,7 +116,7 @@ const Auth = () => {
         <div className="text-center mb-8">
           <img src={logo} alt="IMPNAT Logo" className="h-16 w-auto mx-auto mb-4" />
           <h1 className="font-heading text-2xl font-bold text-foreground">
-            Área Administrativa
+            Área do Aluno
           </h1>
           <p className="text-muted-foreground text-sm mt-2">
             {isSignUp ? "Cria uma conta para aceder" : "Inicia sessão para continuar"}
@@ -112,7 +131,7 @@ const Auth = () => {
               <Input
                 id="email"
                 type="email"
-                placeholder="admin@impnat.co.mz"
+                placeholder="aluno@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="pl-10"
