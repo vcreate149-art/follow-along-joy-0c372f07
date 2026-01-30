@@ -15,6 +15,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import {
   LayoutDashboard,
   BookOpen,
@@ -28,8 +29,10 @@ import {
   Settings,
   GraduationCap,
   Menu,
+  Shield,
 } from "lucide-react";
 import logo from "@/assets/logo-impnat.png";
+import { isAdminRole, getAdminLabel, hasPermission, type AdminRole } from "@/lib/admin-roles";
 
 interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -43,17 +46,20 @@ const studentMenuItems = [
   { title: "Avisos", url: "/dashboard/avisos", icon: Bell },
 ];
 
-const adminMenuItems = [
-  { title: "Visão Geral", url: "/admin", icon: LayoutDashboard },
-  { title: "Gestão de Utilizadores", url: "/admin/utilizadores", icon: Users },
-  { title: "Controlo Financeiro", url: "/admin/financeiro", icon: BarChart3 },
-  { title: "Gestão de Conteúdo", url: "/admin/conteudo", icon: Upload },
-  { title: "Configurações", url: "/admin/configuracoes", icon: Settings },
+// Admin menu items with required permission levels
+const adminMenuItemsConfig = [
+  { title: "Visão Geral", url: "/admin", icon: LayoutDashboard, permission: null },
+  { title: "Gestão de Utilizadores", url: "/admin/utilizadores", icon: Users, permission: "users_view" },
+  { title: "Administradores", url: "/admin/administradores", icon: Shield, permission: "users" },
+  { title: "Controlo Financeiro", url: "/admin/financeiro", icon: BarChart3, permission: "finance_view" },
+  { title: "Gestão de Conteúdo", url: "/admin/conteudo", icon: Upload, permission: "content_view" },
+  { title: "Configurações", url: "/admin/configuracoes", icon: Settings, permission: "settings" },
 ];
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
   const [user, setUser] = useState<any>(null);
   const [profile, setProfile] = useState<any>(null);
+  const [adminRole, setAdminRole] = useState<string | null>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -70,14 +76,16 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
 
       setUser(session.user);
 
-      // Check if admin
+      // Check admin role
       const { data: roleData } = await supabase
         .from("user_roles")
         .select("role")
         .eq("user_id", session.user.id)
         .single();
 
-      setIsAdmin(roleData?.role === "admin");
+      const role = roleData?.role as string | null;
+      setAdminRole(role);
+      setIsAdmin(isAdminRole(role));
 
       // Get profile
       const { data: profileData } = await supabase
@@ -106,7 +114,15 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
     navigate("/");
   };
 
-  const menuItems = isAdmin ? adminMenuItems : studentMenuItems;
+  // Filter admin menu items based on permissions
+  const getAdminMenuItems = () => {
+    return adminMenuItemsConfig.filter(item => {
+      if (!item.permission) return true;
+      return hasPermission(adminRole, item.permission);
+    });
+  };
+
+  const menuItems = isAdmin ? getAdminMenuItems() : studentMenuItems;
 
   if (loading) {
     return (
@@ -196,9 +212,19 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
                 <p className="text-sm font-medium truncate">
                   {profile?.full_name || user?.email}
                 </p>
-                <p className="text-xs text-muted-foreground capitalize">
-                  {isAdmin ? "Administrador" : profile?.user_type || "Aluno"}
-                </p>
+                <div className="flex items-center gap-2">
+                  {isAdmin && (
+                    <Badge variant="outline" className="text-xs flex items-center gap-1">
+                      <Shield className="h-3 w-3" />
+                      {getAdminLabel(adminRole)}
+                    </Badge>
+                  )}
+                  {!isAdmin && (
+                    <p className="text-xs text-muted-foreground capitalize">
+                      {profile?.user_type || "Aluno"}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
             <Button
