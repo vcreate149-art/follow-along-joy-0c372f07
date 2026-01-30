@@ -52,11 +52,11 @@ const App = () => (
           <Route path="/auth" element={<Auth />} />
 
           {/* Student Dashboard Routes */}
-          <Route path="/dashboard" element={<StudentDashboard />} />
-          <Route path="/dashboard/academico" element={<AcademicModule />} />
-          <Route path="/dashboard/financeiro" element={<FinancialModule />} />
-          <Route path="/dashboard/secretaria" element={<SecretariaDigital />} />
-          <Route path="/dashboard/avisos" element={<Avisos />} />
+          <Route path="/impnat-aluno" element={<StudentDashboard />} />
+          <Route path="/impnat-aluno/academico" element={<AcademicModule />} />
+          <Route path="/impnat-aluno/financeiro" element={<FinancialModule />} />
+          <Route path="/impnat-aluno/secretaria" element={<SecretariaDigital />} />
+          <Route path="/impnat-aluno/avisos" element={<Avisos />} />
 
           {/* Admin Dashboard Routes */}
           <Route path="/admin" element={<AdminDashboard />} />
