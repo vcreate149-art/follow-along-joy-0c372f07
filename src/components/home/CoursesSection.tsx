@@ -62,12 +62,12 @@ const CoursesSection = () => {
                 hoverRotate={3}
               >
                 {/* Image */}
-                <div className="aspect-[4/3] overflow-hidden relative bg-muted flex items-center justify-center">
+                <div className="aspect-[4/3] overflow-hidden relative">
                   <motion.img
                     src={course.image}
                     alt={course.title}
-                    className="w-full h-full object-contain"
-                    whileHover={{ scale: 1.05 }}
+                    className="w-full h-full object-cover object-top"
+                    whileHover={{ scale: 1.08 }}
                     transition={{ duration: 0.6 }}
                   />
                   <motion.div 
