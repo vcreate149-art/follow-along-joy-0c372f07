@@ -168,7 +168,7 @@ const HeroSection = () => {
                 whileTap={{ scale: 0.95 }}
                 style={{ transformStyle: "preserve-3d" }}
               >
-                <Button asChild size="lg" variant="outline" className="border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 font-medium text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-none w-full xs:w-auto">
+                <Button asChild size="lg" variant="outline" className="border-2 border-primary-foreground text-primary-foreground bg-primary-foreground/10 hover:bg-primary-foreground/20 font-semibold text-sm sm:text-base px-6 sm:px-8 py-5 sm:py-6 rounded-none w-full xs:w-auto">
                   <Link to="/cursos">
                     Ver Cursos
                   </Link>
