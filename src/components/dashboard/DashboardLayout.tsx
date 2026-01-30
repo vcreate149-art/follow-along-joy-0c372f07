@@ -30,6 +30,7 @@ import {
   GraduationCap,
   Menu,
   Shield,
+  Mail,
 } from "lucide-react";
 import logo from "@/assets/logo-impnat.png";
 import { isAdminRole, getAdminLabel, hasPermission, type AdminRole } from "@/lib/admin-roles";
@@ -50,6 +51,7 @@ const studentMenuItems = [
 const adminMenuItemsConfig = [
   { title: "Visão Geral", url: "/admin", icon: LayoutDashboard, permission: null },
   { title: "Gestão de Utilizadores", url: "/admin/utilizadores", icon: Users, permission: "users_view" },
+  { title: "Emails Autorizados", url: "/admin/emails-autorizados", icon: Mail, permission: "users" },
   { title: "Administradores", url: "/admin/administradores", icon: Shield, permission: "users" },
   { title: "Controlo Financeiro", url: "/admin/financeiro", icon: BarChart3, permission: "finance_view" },
   { title: "Gestão de Conteúdo", url: "/admin/conteudo", icon: Upload, permission: "content_view" },

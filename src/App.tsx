@@ -29,6 +29,7 @@ import FinancialControl from "./pages/admin/FinancialControl";
 import ContentManagement from "./pages/admin/ContentManagement";
 import AdminSettings from "./pages/admin/AdminSettings";
 import AdminRolesManagement from "./pages/admin/AdminRolesManagement";
+import AuthorizedEmails from "./pages/admin/AuthorizedEmails";
 
 const queryClient = new QueryClient();
 
@@ -60,6 +61,7 @@ const App = () => (
           {/* Admin Dashboard Routes */}
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/utilizadores" element={<UserManagement />} />
+          <Route path="/admin/emails-autorizados" element={<AuthorizedEmails />} />
           <Route path="/admin/administradores" element={<AdminRolesManagement />} />
           <Route path="/admin/financeiro" element={<FinancialControl />} />
           <Route path="/admin/conteudo" element={<ContentManagement />} />
