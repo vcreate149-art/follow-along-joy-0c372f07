@@ -56,13 +56,14 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
           className="absolute inset-0"
         >
-          {/* Background Image - Amplified */}
+          {/* Background Image - Centered focal point */}
           <motion.img 
             src={slides[currentSlide].image} 
             alt={`${slides[currentSlide].title} ${slides[currentSlide].highlight}`}
-            className="absolute inset-0 w-full h-full object-cover object-center scale-105"
-            initial={{ scale: 1.15 }}
-            animate={{ scale: 1.05 }}
+            className="absolute inset-0 w-full h-full object-cover"
+            style={{ objectPosition: 'center center' }}
+            initial={{ scale: 1.1 }}
+            animate={{ scale: 1.02 }}
             transition={{ duration: 12, ease: "easeOut" }}
           />
           {/* Professional Gradient Overlay */}

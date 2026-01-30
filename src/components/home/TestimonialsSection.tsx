@@ -29,9 +29,9 @@ const testimonials = [
   {
     id: 4,
     name: "Carlos Nhaca",
-    role: "Electricista na EDM",
-    course: "Electricidade Industrial",
-    content: "A formação técnica do IMPNAT é de primeira qualidade. Hoje sou electricista na EDM e devo tudo à base sólida que construí no instituto.",
+    role: "Eletricista na EDM",
+    course: "Eletricidade Industrial",
+    content: "A formação técnica do IMPNAT é de primeira qualidade. Hoje sou eletricista na EDM e devo tudo à base sólida que construí no instituto.",
   },
 ];
 

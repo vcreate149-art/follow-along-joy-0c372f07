@@ -64,9 +64,10 @@ const GallerySection = () => {
                 <motion.img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-contain"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center center' }}
                   loading="lazy"
-                  whileHover={{ scale: 1.05 }}
+                  whileHover={{ scale: 1.03 }}
                   transition={{ duration: 0.6 }}
                 />
                 <motion.div 

@@ -23,7 +23,7 @@ const WhatsAppButton = () => {
         <div className="relative flex items-center gap-2 sm:gap-3 bg-green-500 hover:bg-green-600 text-white px-4 sm:px-5 py-3 sm:py-4 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
           <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
           <span className="font-semibold text-sm sm:text-base hidden xs:inline sm:inline">
-            Fale Connosco
+            Fale Conosco
           </span>
         </div>
 

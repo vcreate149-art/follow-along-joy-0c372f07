@@ -79,7 +79,7 @@ const Footer = () => {
                 "Secretariado Executivo",
                 "Gestão de Logística",
                 "Gestão de RH",
-                "Electricidade Industrial",
+                "Eletricidade Industrial",
                 "Redes de Computadores",
               ].map((course) => (
                 <li key={course}>
