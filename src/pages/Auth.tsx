@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,7 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Lock, Mail, AlertCircle, ShieldCheck } from "lucide-react";
+import { Loader2, Lock, Mail, AlertCircle, ShieldCheck, Shield } from "lucide-react";
 import logo from "@/assets/logo-impnat.png";
 import { isAdminRole } from "@/lib/admin-roles";
 
@@ -20,7 +20,11 @@ const Auth = () => {
   const [emailAuthorized, setEmailAuthorized] = useState<boolean | null>(null);
   const [authorizedInfo, setAuthorizedInfo] = useState<any>(null);
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
   const { toast } = useToast();
+  
+  // Check if coming from admin route
+  const fromAdmin = searchParams.get("from") === "admin";
 
   useEffect(() => {
     const checkSession = async () => {
@@ -207,12 +211,28 @@ const Auth = () => {
       <Card className="w-full max-w-md p-8 bg-background">
         <div className="text-center mb-8">
           <img src={logo} alt="IMPNAT Logo" className="h-16 w-auto mx-auto mb-4" />
-          <h1 className="font-heading text-2xl font-bold text-foreground">
-            Área do Aluno
-          </h1>
-          <p className="text-muted-foreground text-sm mt-2">
-            {isSignUp ? "Cria uma conta para aceder" : "Inicia sessão para continuar"}
-          </p>
+          {fromAdmin ? (
+            <>
+              <div className="flex items-center justify-center gap-2 mb-2">
+                <Shield className="h-6 w-6 text-primary" />
+                <h1 className="font-heading text-2xl font-bold text-foreground">
+                  Administração
+                </h1>
+              </div>
+              <p className="text-muted-foreground text-sm">
+                Acesso restrito a administradores
+              </p>
+            </>
+          ) : (
+            <>
+              <h1 className="font-heading text-2xl font-bold text-foreground">
+                Área do Aluno
+              </h1>
+              <p className="text-muted-foreground text-sm mt-2">
+                {isSignUp ? "Cria uma conta para aceder" : "Inicia sessão para continuar"}
+              </p>
+            </>
+          )}
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">

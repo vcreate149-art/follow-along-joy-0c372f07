@@ -59,7 +59,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
       const { data: { session } } = await supabase.auth.getSession();
       
       if (!session) {
-        navigate("/auth");
+        navigate("/auth?from=admin");
         return;
       }
 
@@ -97,7 +97,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       if (!session) {
-        navigate("/auth");
+        navigate("/auth?from=admin");
       }
     });
 
