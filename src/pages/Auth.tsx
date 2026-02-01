@@ -33,7 +33,7 @@ const Auth = () => {
           .single();
         
         const role = roleData?.role as string | null;
-        navigate(isAdminRole(role) ? "/admin" : "/dashboard");
+        navigate(isAdminRole(role) ? "/admin" : "/impnat-aluno");
       }
     };
     checkSession();
@@ -48,7 +48,7 @@ const Auth = () => {
             .single();
           
           const role = roleData?.role as string | null;
-          navigate(isAdminRole(role) ? "/admin" : "/dashboard");
+          navigate(isAdminRole(role) ? "/admin" : "/impnat-aluno");
         }, 0);
       }
     });
@@ -125,7 +125,7 @@ const Auth = () => {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/dashboard`,
+            emailRedirectTo: `${window.location.origin}/impnat-aluno`,
           },
         });
 
