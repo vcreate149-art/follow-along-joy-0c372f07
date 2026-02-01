@@ -130,14 +130,14 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-muted/30">
-        <Sidebar className="border-r bg-background flex flex-col h-screen">
-          <div className="p-4 border-b shrink-0">
+        <Sidebar className="border-r flex flex-col h-screen" style={{ backgroundColor: 'hsl(var(--sidebar-background))', color: 'hsl(var(--sidebar-foreground))' }}>
+          <div className="p-4 border-b border-sidebar-border shrink-0">
             <Link to="/" className="flex items-center gap-3">
               <img src={logo} alt="IMPNAT" className="h-10 w-auto" />
               <div>
-                <h1 className="font-heading font-bold text-primary text-lg">IMPNAT</h1>
-                <p className="text-xs text-foreground flex items-center gap-1">
-                  <Shield className="h-3 w-3 text-primary" />
+                <h1 className="font-heading font-bold text-sidebar-primary text-lg">IMPNAT</h1>
+                <p className="text-xs text-sidebar-foreground/80 flex items-center gap-1">
+                  <Shield className="h-3 w-3 text-sidebar-primary" />
                   Administração
                 </p>
               </div>
@@ -146,7 +146,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
 
           <SidebarContent className="p-2 flex-1 overflow-y-auto">
             <SidebarGroup>
-              <SidebarGroupLabel className="text-xs uppercase text-muted-foreground px-2 mb-2">
+              <SidebarGroupLabel className="text-xs uppercase text-sidebar-foreground/60 px-2 mb-2">
                 Gestão
               </SidebarGroupLabel>
               <SidebarGroupContent>
@@ -158,8 +158,8 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
                           to={item.url}
                           className={`flex items-center gap-3 px-3 py-2 rounded-lg transition-colors ${
                             location.pathname === item.url
-                              ? "bg-primary text-primary-foreground"
-                              : "hover:bg-muted"
+                              ? "bg-sidebar-primary text-sidebar-primary-foreground"
+                              : "text-sidebar-foreground hover:bg-sidebar-accent"
                           }`}
                         >
                           <item.icon className="h-5 w-5" />
@@ -173,19 +173,19 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             </SidebarGroup>
           </SidebarContent>
 
-          <div className="p-4 border-t bg-background shrink-0">
+          <div className="p-4 border-t border-sidebar-border shrink-0">
             <div className="flex items-center gap-3 mb-4">
               <Avatar>
                 <AvatarImage src={profile?.avatar_url} />
-                <AvatarFallback className="bg-primary text-primary-foreground">
+                <AvatarFallback className="bg-sidebar-primary text-sidebar-primary-foreground">
                   {profile?.full_name?.charAt(0) || user?.email?.charAt(0)?.toUpperCase()}
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate text-foreground">
+                <p className="text-sm font-medium truncate text-sidebar-foreground">
                   {profile?.full_name || user?.email}
                 </p>
-                <Badge variant="secondary" className="text-xs flex items-center gap-1 w-fit mt-1">
+                <Badge className="text-xs flex items-center gap-1 w-fit mt-1 bg-sidebar-accent text-sidebar-foreground">
                   <Shield className="h-3 w-3" />
                   {getAdminLabel(adminRole)}
                 </Badge>
@@ -193,7 +193,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             </div>
             <Button
               variant="outline"
-              className="w-full justify-start gap-2"
+              className="w-full justify-start gap-2 border-sidebar-border text-sidebar-foreground hover:bg-sidebar-accent hover:text-sidebar-foreground"
               onClick={handleLogout}
             >
               <LogOut className="h-4 w-4" />
