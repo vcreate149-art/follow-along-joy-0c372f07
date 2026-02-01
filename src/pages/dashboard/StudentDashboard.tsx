@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import StudentLayout from "@/components/dashboard/StudentLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
@@ -82,16 +82,16 @@ const StudentDashboard = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <StudentLayout>
         <div className="flex items-center justify-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
         </div>
-      </DashboardLayout>
+      </StudentLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <StudentLayout>
       <div className="space-y-6">
         {/* Welcome Section */}
         <div className="bg-gradient-to-r from-primary to-primary/80 rounded-2xl p-6 text-primary-foreground">
@@ -309,7 +309,7 @@ const StudentDashboard = () => {
           </Button>
         </div>
       </div>
-    </DashboardLayout>
+    </StudentLayout>
   );
 };
 

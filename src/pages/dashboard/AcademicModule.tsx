@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import StudentLayout from "@/components/dashboard/StudentLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
@@ -108,16 +108,16 @@ const AcademicModule = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <StudentLayout>
         <div className="flex items-center justify-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
         </div>
-      </DashboardLayout>
+      </StudentLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <StudentLayout>
       <div className="space-y-6">
         <div>
           <h1 className="font-heading text-2xl font-bold">Módulo Académico</h1>
@@ -319,7 +319,7 @@ const AcademicModule = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </DashboardLayout>
+    </StudentLayout>
   );
 };
 

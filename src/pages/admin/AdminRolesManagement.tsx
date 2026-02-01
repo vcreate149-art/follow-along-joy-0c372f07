@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import AdminLayout from "@/components/dashboard/AdminLayout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -235,18 +235,18 @@ const AdminRolesManagement = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <div className="flex items-center justify-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
         </div>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   // Check if user has permission to manage admins
   if (!hasPermission(currentUserRole, "users")) {
     return (
-      <DashboardLayout>
+      <AdminLayout>
         <Card className="border-destructive/50">
           <CardContent className="py-12 text-center">
             <Shield className="h-16 w-16 mx-auto text-muted-foreground mb-4" />
@@ -256,12 +256,12 @@ const AdminRolesManagement = () => {
             </p>
           </CardContent>
         </Card>
-      </DashboardLayout>
+      </AdminLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <AdminLayout>
       <div className="space-y-6">
         <div>
           <h1 className="font-heading text-2xl font-bold flex items-center gap-2">
@@ -513,7 +513,7 @@ const AdminRolesManagement = () => {
           </CardContent>
         </Card>
       </div>
-    </DashboardLayout>
+    </AdminLayout>
   );
 };
 
