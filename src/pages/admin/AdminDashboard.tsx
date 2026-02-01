@@ -55,7 +55,7 @@ const AdminDashboard = () => {
 
       const role = roleData?.role as string | null;
       if (!isAdminRole(role)) {
-        navigate("/dashboard");
+        navigate("/impnat-aluno");
         return;
       }
 
