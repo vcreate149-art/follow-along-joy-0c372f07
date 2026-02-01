@@ -129,7 +129,7 @@ const AdminDashboard = () => {
               <h1 className="font-heading text-2xl md:text-3xl font-bold">
                 Painel Administrativo
               </h1>
-              <Badge variant="secondary" className="mt-1">
+              <Badge className="mt-1 bg-background/20 text-primary-foreground border-primary-foreground/30">
                 {getAdminLabel(adminRole)}
               </Badge>
             </div>

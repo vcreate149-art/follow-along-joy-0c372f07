@@ -131,13 +131,13 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-muted/30">
         <Sidebar className="border-r bg-background">
-          <div className="p-4 border-b bg-primary/5">
+          <div className="p-4 border-b">
             <Link to="/" className="flex items-center gap-3">
               <img src={logo} alt="IMPNAT" className="h-10 w-auto" />
               <div>
                 <h1 className="font-heading font-bold text-primary text-lg">IMPNAT</h1>
-                <p className="text-xs text-muted-foreground flex items-center gap-1">
-                  <Shield className="h-3 w-3" />
+                <p className="text-xs text-foreground flex items-center gap-1">
+                  <Shield className="h-3 w-3 text-primary" />
                   Administração
                 </p>
               </div>
@@ -182,10 +182,10 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
                 </AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium truncate">
+                <p className="text-sm font-medium truncate text-foreground">
                   {profile?.full_name || user?.email}
                 </p>
-                <Badge variant="outline" className="text-xs flex items-center gap-1 w-fit">
+                <Badge variant="secondary" className="text-xs flex items-center gap-1 w-fit mt-1">
                   <Shield className="h-3 w-3" />
                   {getAdminLabel(adminRole)}
                 </Badge>
