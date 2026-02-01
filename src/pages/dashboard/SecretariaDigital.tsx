@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import DashboardLayout from "@/components/dashboard/DashboardLayout";
+import StudentLayout from "@/components/dashboard/StudentLayout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -142,16 +142,16 @@ const SecretariaDigital = () => {
 
   if (loading) {
     return (
-      <DashboardLayout>
+      <StudentLayout>
         <div className="flex items-center justify-center h-64">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary" />
         </div>
-      </DashboardLayout>
+      </StudentLayout>
     );
   }
 
   return (
-    <DashboardLayout>
+    <StudentLayout>
       <div className="space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
           <div>
@@ -355,7 +355,7 @@ const SecretariaDigital = () => {
           </CardContent>
         </Card>
       </div>
-    </DashboardLayout>
+    </StudentLayout>
   );
 };
 
