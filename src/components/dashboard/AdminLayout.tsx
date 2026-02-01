@@ -130,8 +130,8 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full bg-muted/30">
-        <Sidebar className="border-r bg-background">
-          <div className="p-4 border-b">
+        <Sidebar className="border-r bg-background flex flex-col h-screen">
+          <div className="p-4 border-b shrink-0">
             <Link to="/" className="flex items-center gap-3">
               <img src={logo} alt="IMPNAT" className="h-10 w-auto" />
               <div>
@@ -144,7 +144,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             </Link>
           </div>
 
-          <SidebarContent className="p-2">
+          <SidebarContent className="p-2 flex-1 overflow-y-auto">
             <SidebarGroup>
               <SidebarGroupLabel className="text-xs uppercase text-muted-foreground px-2 mb-2">
                 Gestão
@@ -173,7 +173,7 @@ const AdminLayout = ({ children }: AdminLayoutProps) => {
             </SidebarGroup>
           </SidebarContent>
 
-          <div className="mt-auto p-4 border-t">
+          <div className="p-4 border-t bg-background shrink-0">
             <div className="flex items-center gap-3 mb-4">
               <Avatar>
                 <AvatarImage src={profile?.avatar_url} />
